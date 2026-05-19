@@ -96,9 +96,9 @@
     margin: 0 0 24px;
   }
   h3 {
-    font-size: 17px;
+    font-size: 16.5px;
     font-weight: 600;
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     color: #1a1a1a;
   }
   p { margin: 0 0 14px; }
@@ -122,17 +122,39 @@
   }
 
   .project {
-    padding: 28px 0;
+    padding: 22px 0;
     border-top: 1px solid #f0f0f0;
   }
   .project:first-of-type { border-top: none; padding-top: 0; }
   .project:last-of-type { padding-bottom: 0; }
-  .project p { color: #333; }
-  .project .note {
-    font-size: 13px;
-    color: #888;
-    margin-top: 2px;
+  .project p { color: #333; font-size: 15.5px; line-height: 1.6; margin-bottom: 8px; }
+  .project .meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    align-items: center;
   }
+  .project .status {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .status-live { background: #ecf7ee; color: #2d6a36; border: 1px solid #d4ebd7; }
+  .status-private { background: #f5f5f5; color: #555; border: 1px solid #ececec; }
+  .status-research { background: #fdf6e3; color: #856404; border: 1px solid #faebcc; }
+  .project a.read-more {
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color 0.15s;
+  }
+  .project a.read-more:hover { border-bottom-color: #1a1a1a; }
   .project a.inline {
     color: #1a1a1a;
     text-decoration: none;
@@ -276,6 +298,9 @@
       <span class="cap">Git / GitHub</span>
       <span class="cap">Linux / Ubuntu</span>
       <span class="cap">API integrations</span>
+      <span class="cap">OSINT pipelines</span>
+      <span class="cap">Stripe / payments</span>
+      <span class="cap">Vercel / deploy infra</span>
       <span class="cap">Debugging</span>
       <span class="cap">Workflow automation</span>
       <span class="cap">Dashboards</span>
@@ -289,19 +314,75 @@
     <h2>Selected Work</h2>
 
     <div class="project">
-      <h3>Marius — Multi-Agent AI Orchestration</h3>
-      <p>Private platform that routes requests across cloud and local LLM providers, gates agent actions through a policy layer, coordinates multi-step tasks, and surfaces state through an operator dashboard. Every code change ships as a pull request a human reviews and merges.</p>
-      <p class="note">Production code private. Sanitized architecture and example schemas in the <a class="inline" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio" target="_blank" rel="noopener noreferrer">public portfolio repo</a>.</p>
+      <h3>Marius Mind</h3>
+      <p>Multi-agent orchestration and control plane. Routes requests across cloud and local LLM providers, gates agent actions through a declarative policy layer, coordinates multi-step tasks, surfaces state through an operator dashboard.</p>
+      <div class="meta">
+        <span class="status status-private">Private</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/marius-mind.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Marius Code</h3>
+      <p>Code-reading and PR-proposing agent. Reads a repository, drafts targeted changes, and ships them as pull requests a human reviews. Never force-pushes, never self-merges, never rewrites history.</p>
+      <div class="meta">
+        <span class="status status-private">Private</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/marius-code.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Marius Trader</h3>
+      <p>Paper-only AI trading research cockpit. Bull, bear, and risk agent personas analyze the same position; a judging agent summarizes. No broker integration, by design. Outcomes scored against historical ground truth.</p>
+      <div class="meta">
+        <span class="status status-research">Research</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/marius-trader.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Marius Radar</h3>
+      <p>OSINT-driven prospect intelligence engine. Scores leads on operational signals (site speed, exposed services, SERP drift, credential leaks) other tools miss because they only see firmographic data.</p>
+      <div class="meta">
+        <span class="status status-private">Private</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/marius-radar.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Marius Foreman</h3>
+      <p>Missed-call recovery system for small home-services contractors. Text-back, lead qualification, estimate follow-up, review prompting — installed against the tools operators already use. Live at <a class="inline" href="https://usemarius.com" target="_blank" rel="noopener noreferrer">usemarius.com</a>.</p>
+      <div class="meta">
+        <span class="status status-live">Live</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/marius-foreman.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>McTable</h3>
+      <p>Filesystem and GitHub coordination layer for agents. Tasks with stable IDs, proof bundles attached to every proposed change, append-only activity log, human-reviewed PR workflow. Turns agent output into auditable artifacts.</p>
+      <div class="meta">
+        <span class="status status-private">Private</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/mctable.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Lead Leak Scan</h3>
+      <p>Free SMB website audit tool. Fifteen specific signals tied to missed-lead revenue for local home-services businesses. Live at <a class="inline" href="https://missedleadscan.com" target="_blank" rel="noopener noreferrer">missedleadscan.com</a>.</p>
+      <div class="meta">
+        <span class="status status-live">Live</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/lead-leak-scan.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
     </div>
 
     <div class="project">
       <h3>Good Stuff Vault</h3>
-      <p>A portfolio of paywalled curated digital product sites at <a class="inline" href="https://goodstuffvault.com" target="_blank" rel="noopener noreferrer">goodstuffvault.com</a>. Twelve live niches built end-to-end: curation, content, payment flow, hosting, and analytics. Designed and shipped solo using Python build pipelines, Stripe Payment Links, and Vercel deploys.</p>
-    </div>
-
-    <div class="project">
-      <h3>AI Evaluation &amp; Agent Workflow Tooling</h3>
-      <p>Rubric-based output scoring, structured proof bundles, human-in-the-loop review queues, and the surrounding infrastructure that makes agent work auditable. The kind of evaluation pipeline that AI training, agent-builder, and LLM evaluation roles depend on day-to-day.</p>
+      <p>Portfolio of twelve paywalled curated digital product sites built from one codebase. End-to-end: curation, content, payment flow, hosting, analytics. Live at <a class="inline" href="https://goodstuffvault.com" target="_blank" rel="noopener noreferrer">goodstuffvault.com</a>.</p>
+      <div class="meta">
+        <span class="status status-live">Live</span>
+        <a class="read-more" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio/blob/main/projects/good-stuff-vault.md" target="_blank" rel="noopener noreferrer">Read more →</a>
+      </div>
     </div>
   </div>
 </section>
