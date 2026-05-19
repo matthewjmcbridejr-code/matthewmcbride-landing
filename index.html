@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>Matt McBride — AI Systems Builder</title>
+<meta name="description" content="Matt McBride builds AI agent workflows, LLM orchestration systems, and evaluation pipelines using Python, FastAPI, and modern model providers.">
+<meta property="og:title" content="Matt McBride — AI Systems Builder">
+<meta property="og:description" content="Practical AI agent workflows, LLM orchestration, evaluation pipelines, and automation tools.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usemarius.com/matthewmcbride">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header {
+    padding: 28px 0;
+    border-bottom: 1px solid #ececec;
+  }
+  header .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #555;
+    text-decoration: none;
+  }
+  .brand:hover { color: #1a1a1a; }
+  .nav {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+  }
+  .nav a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav a:hover { color: #1a1a1a; }
+
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid #ececec; }
+
+  .hero { padding: 88px 0 64px; }
+  .hero h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .hero .role {
+    font-size: 17px;
+    font-weight: 500;
+    color: #555;
+    margin: 0 0 24px;
+  }
+  .hero .lead {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: #888;
+    margin: 0 0 24px;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #1a1a1a;
+  }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  .capabilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+  }
+  .cap {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    background: #f5f5f5;
+    color: #2a2a2a;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ececec;
+    white-space: nowrap;
+  }
+
+  .project {
+    padding: 28px 0;
+    border-top: 1px solid #f0f0f0;
+  }
+  .project:first-of-type { border-top: none; padding-top: 0; }
+  .project:last-of-type { padding-bottom: 0; }
+  .project p { color: #333; }
+  .project .note {
+    font-size: 13px;
+    color: #888;
+    margin-top: 2px;
+  }
+  .project a.inline {
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.15s;
+  }
+  .project a.inline:hover { border-bottom-color: #1a1a1a; }
+
+  .work-style {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .work-style .item {
+    padding-left: 16px;
+    border-left: 2px solid #ececec;
+  }
+  .work-style .item strong {
+    display: block;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+    font-size: 15px;
+  }
+  .work-style .item span {
+    color: #555;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .contact-grid a {
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+    font-size: 15.5px;
+    transition: border-color 0.15s;
+    word-break: break-all;
+  }
+  .contact-grid a:hover { border-bottom-color: #1a1a1a; }
+  .contact-grid .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 11px 18px;
+    background: #1a1a1a;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14.5px;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: #333; }
+
+  footer {
+    padding: 32px 0 48px;
+    border-top: 1px solid #ececec;
+    font-size: 13px;
+    color: #888;
+  }
+  footer a {
+    color: #666;
+    text-decoration: none;
+  }
+  footer a:hover { color: #1a1a1a; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 0 40px; }
+    .hero h1 { font-size: 30px; }
+    .hero .role, .hero .lead { font-size: 16px; }
+    section { padding: 44px 0; }
+    header { padding: 20px 0; }
+    .nav { gap: 14px; font-size: 13.5px; }
+    .cap { font-size: 12px; padding: 5px 9px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/matthewmcbride">Matt McBride</a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Matt McBride</h1>
+    <p class="role">AI Systems Builder &middot; Software Workflow Operator</p>
+    <p class="lead">I build practical AI agent workflows, LLM orchestration systems, evaluation pipelines, and automation tools using Python, FastAPI, GitHub workflows, and cloud and local model providers.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p>I combine software architecture, AI automation, Linux and server operations, and real-world operational leadership. I work end-to-end: designing the architecture, writing the code, wiring the integrations, running the deployments, and iterating on evaluation feedback.</p>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="wrap">
+    <h2>Core Capabilities</h2>
+    <div class="capabilities">
+      <span class="cap">Python</span>
+      <span class="cap">FastAPI</span>
+      <span class="cap">REST APIs</span>
+      <span class="cap">LLM orchestration</span>
+      <span class="cap">AI agent workflows</span>
+      <span class="cap">Prompt engineering</span>
+      <span class="cap">LLM evaluation</span>
+      <span class="cap">Git / GitHub</span>
+      <span class="cap">Linux / Ubuntu</span>
+      <span class="cap">API integrations</span>
+      <span class="cap">Debugging</span>
+      <span class="cap">Workflow automation</span>
+      <span class="cap">Dashboards</span>
+      <span class="cap">Technical documentation</span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected Work</h2>
+
+    <div class="project">
+      <h3>Marius — Multi-Agent AI Orchestration</h3>
+      <p>Private platform that routes requests across cloud and local LLM providers, gates agent actions through a policy layer, coordinates multi-step tasks, and surfaces state through an operator dashboard. Every code change ships as a pull request a human reviews and merges.</p>
+      <p class="note">Production code private. Sanitized architecture and example schemas in the <a class="inline" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio" target="_blank" rel="noopener noreferrer">public portfolio repo</a>.</p>
+    </div>
+
+    <div class="project">
+      <h3>Good Stuff Vault</h3>
+      <p>A portfolio of paywalled curated digital product sites at <a class="inline" href="https://goodstuffvault.com" target="_blank" rel="noopener noreferrer">goodstuffvault.com</a>. Twelve live niches built end-to-end: curation, content, payment flow, hosting, and analytics. Designed and shipped solo using Python build pipelines, Stripe Payment Links, and Vercel deploys.</p>
+    </div>
+
+    <div class="project">
+      <h3>AI Evaluation &amp; Agent Workflow Tooling</h3>
+      <p>Rubric-based output scoring, structured proof bundles, human-in-the-loop review queues, and the surrounding infrastructure that makes agent work auditable. The kind of evaluation pipeline that AI training, agent-builder, and LLM evaluation roles depend on day-to-day.</p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How I Work</h2>
+    <div class="work-style">
+      <div class="item">
+        <strong>Clear specs first</strong>
+        <span>Write down what the system should do before writing how. Specs make evaluation possible.</span>
+      </div>
+      <div class="item">
+        <strong>Debug end-to-end</strong>
+        <span>Read logs, reproduce locally, isolate the failing component. Not "restart and hope."</span>
+      </div>
+      <div class="item">
+        <strong>Testing and safety checks</strong>
+        <span>Inputs validated, outputs checked, destructive actions gated behind explicit confirmation.</span>
+      </div>
+      <div class="item">
+        <strong>Pull request review</strong>
+        <span>Changes ship through PRs with diffs a human can actually read. No background commits to main.</span>
+      </div>
+      <div class="item">
+        <strong>Evidence-based evaluation</strong>
+        <span>Score outputs against rubrics, log the score, compare versions over time. Vibes are not a measurement.</span>
+      </div>
+      <div class="item">
+        <strong>Practical shipping</strong>
+        <span>Real systems running for real users beat perfect systems on a slide. Iterate from there.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Resume &amp; Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <a href="mailto:matt@usemarius.com">matt@usemarius.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/matthewjmcbridejr-code" target="_blank" rel="noopener noreferrer">github.com/matthewjmcbridejr-code</a>
+      </div>
+    </div>
+    <a class="btn" href="https://github.com/matthewjmcbridejr-code/marius-ai-systems-portfolio" target="_blank" rel="noopener noreferrer">View sanitized portfolio repo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Last updated May 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
